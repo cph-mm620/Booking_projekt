@@ -3,8 +3,16 @@ package business.entities;
 public class User
 {
 
+    public User(int id, String email, String password, String role) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     public User(String email, String password, String role)
     {
+
         this.email = email;
         this.password = password;
         this.role = role;
@@ -14,6 +22,7 @@ public class User
     private String email;
     private String password; // Should be hashed and secured
     private String role;
+
 
     public String getEmail()
     {
