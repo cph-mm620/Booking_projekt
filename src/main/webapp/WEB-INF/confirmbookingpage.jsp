@@ -10,13 +10,21 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
 
-        Role: ${sessionScope.role}
 
-        </br>
+        <h5>dage:</h5>
+        <p>
+                ${requestScope.booking.days}
+        </p>
+        <h5>dato:</h5>
+        <p>
+            ${requestScope.booking.booking_date}
+        </p>
+        <h5>status:</h5>
+        <p>
+                ${requestScope.booking.booking_status = "Reseveret"}
+        </p>
 
-        <a href="${pageContext.request.contextPath}/fc/bookingpage">Book dit udstyr her:</a>
     </jsp:body>
 
 </t:genericpage>

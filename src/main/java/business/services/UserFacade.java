@@ -26,4 +26,8 @@ public class UserFacade
         return user;
     }
 
+    public void subtractsPoints(int points, int userId)throws UserException
+    {
+        userMapper.subtractsPoints(points, userId);
+    }
 }

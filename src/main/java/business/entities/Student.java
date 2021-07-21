@@ -1,17 +1,18 @@
 package business.entities;
 
-public class User
+public class Student
 {
 
-    public User(int id, String email, String password, String role, int point) {
+    public Student(int id, String email, String password, String role, int phone, int point) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.phone = phone;
         this.point = point;
     }
 
-    public User(String email, String password, String role)
+    public Student(String email, String password, String role)
     {
 
         this.email = email;
@@ -24,6 +25,7 @@ public class User
     private String password; // Should be hashed and secured
     private String role;
     private int point;
+    private int phone;
 
 
     public String getEmail()
@@ -51,9 +53,10 @@ public class User
         return role;
     }
 
-    public void setRole(String role)
+    public String setRole(String role)
     {
         this.role = role;
+        return role;
     }
 
     public int getId()
@@ -66,6 +69,14 @@ public class User
         this.id = id;
     }
 
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
     public int getPoint() {
         return point;
     }
@@ -73,4 +84,5 @@ public class User
     public void setPoint(int point) {
         this.point = point;
     }
+
 }

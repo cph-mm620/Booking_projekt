@@ -12,19 +12,28 @@
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
         Her er en liste med alt udstyr
-        <table class ="table table-striped">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Navn</th>
+                <th scope="col">Beskrivelse</th>
+                <th scope="col">Lokale</th>
+                <th scope="col">Type</th>
+
+
+            </tr>
             <c:forEach var="item" items="${requestScope.itemList}">
                 <tr>
                     <td>${item.item_id}</td>
                     <td>${item.item_name}</td>
-                    <td>${item.item_type}</td>
                     <td>${item.item_tag}</td>
-                    <td>
-                        <button class="btn btn-success" type="submit">Book</button></td>
-                </tr>
+                    <td>${item.room_nr}</td>
+                    <td>${item.item_type}</td>
 
+                </tr>
             </c:forEach>
         </table>
+
     </jsp:body>
 
 </t:genericpage>

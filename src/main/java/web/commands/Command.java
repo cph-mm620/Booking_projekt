@@ -2,6 +2,7 @@ package web.commands;
 
 import business.exceptions.UserException;
 import business.persistence.Database;
+import business.services.BookingFacade;
 
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +27,17 @@ public abstract class Command
         commands.put("logoutcommand", new LogoutCommand(""));
         commands.put("registerpage", new CommandUnprotectedPage("registerpage"));
         commands.put("registercommand", new RegisterCommand(""));
+
+
         commands.put("studentpage", new CommandProtectedPage("customerpage", "student"));
-        commands.put("adminpage", new CommandProtectedPage("employeepage", "admin"));
+        commands.put("bookingpage",new ShowItemCommand("bookingpage","student"));
+        commands.put("confirmbookingpage", new NewBookingCommand ("confirmbookingpage", "student"));
+
+        commands.put("showitempage", new ShowItemCommand("showItempage","admin"));
         commands.put("showstudents", new ShowStudentsCommand("showstudentpage", "admin"));
-        commands.put("showitems", new ShowItemCommand("showItempage","admin"));
-        commands.put("showitems", new ShowItemCommand("showItempage","student"));
+        commands.put("adminpage", new CommandProtectedPage("employeepage", "admin"));
+        commands.put("bookeditemslist", new ShowBookedItemsCommand("bookeditemslist", "admin"));
+
     }
 
     public static Command fromPath(

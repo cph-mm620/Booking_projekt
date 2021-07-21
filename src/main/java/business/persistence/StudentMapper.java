@@ -1,12 +1,10 @@
 package business.persistence;
 
+import business.entities.Student;
 import business.entities.User;
 import business.exceptions.UserException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +32,8 @@ public class StudentMapper {
                     int id = rs.getInt("id");
                     String email = rs.getString("email");
                     String password = rs.getString("password");
-                    User user = new User(id, email, password, role);
+                    int point = rs.getInt("point");
+                    User user = new User(id, email, password, role, point);
                     user.setId(id);
                     studentList.add(user);
                 }
@@ -51,5 +50,28 @@ public class StudentMapper {
 
 
         return studentList;
+    }
+
+    public Student addNewStudent(Student student) throws UserException {
+
+        try (Connection connection = database.connect()) {
+            String sql = "INSERT INTO user SET email = ?, password = ?, role = ?, phone = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, student.getEmail());
+                ps.setString(2, student.getPassword());
+                ps.setString(3, student.setRole("student"));
+                ps.setInt(4, student.getPhone());
+                ps.executeUpdate();
+                ResultSet ids = ps.getGeneratedKeys();
+                ids.next();
+
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+        return student;
     }
 }

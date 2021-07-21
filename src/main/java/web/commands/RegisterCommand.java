@@ -36,6 +36,7 @@ public class RegisterCommand extends CommandUnprotectedPage
             session.setAttribute("role", user.getRole());
             return user.getRole() + "page";
         }
+
         else
         {
             request.setAttribute("error", "the two passwords did not match");

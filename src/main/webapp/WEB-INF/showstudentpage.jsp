@@ -12,12 +12,18 @@
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
         Her er en liste med alle studerende
-        <table class ="table table-striped">
+        <table class ="table table-striped table-bordered table-hover">
+
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Point</th>
+            </tr>
             <c:forEach var="student" items="${requestScope.studentList}">
                 <tr>
                     <td>${student.id}</td>
                     <td>${student.email}</td>
-
+                    <td>${student.point}</td>
                 </tr>
 
             </c:forEach>

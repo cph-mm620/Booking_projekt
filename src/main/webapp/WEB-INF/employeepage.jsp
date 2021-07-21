@@ -13,8 +13,9 @@
         Du er logget ind som admin
 
         <a href="${pageContext.request.contextPath}/fc/showstudents">Vis alle studerende</a> <br/>
-        <a href="${pageContext.request.contextPath}/fc/showitems">Vis alt udstyr</a>
+        <a href="${pageContext.request.contextPath}/fc/showitempage">Vis alt udstyr</a>
         <br/>
+
         <a href="${pageContext.request.contextPath}/fc/registerpage">Opret studerende</a>
 
     </jsp:body>
