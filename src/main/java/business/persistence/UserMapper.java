@@ -76,13 +76,13 @@ public class UserMapper
         }
     }
 
-    public int subtractsPoints(int points, int userId) {
+    public int subtractsPoints(int points, int users_Id) {
         try (Connection connection = database.connect()) {
-            String sql = "update user set points = points - ? where user_id = ?";
+            String sql = "update user set points = points - ? where users_id = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, points);
-                ps.setInt(2, userId);
+                ps.setInt(2, users_Id);
                 ps.executeUpdate();
 
             } catch (SQLException throwables) {

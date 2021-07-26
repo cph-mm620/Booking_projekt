@@ -31,7 +31,7 @@ public class NewBookingCommand extends CommandProtectedPage {
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");
-        int userId = user.getId();
+        int users_Id = user.getId();
         int itemId = Integer.parseInt(request.getParameter("item"));
         int days = 0;
         boolean booking_status = false;
@@ -46,9 +46,10 @@ public class NewBookingCommand extends CommandProtectedPage {
 
 
         String comment = request.getParameter("comment");
-        Booking booking = NewBookingFacade.addNewBooking(userId, String.valueOf(booking_date), booking_status, itemId, days, comment);
-        // call a method in the UserMapper by name: subtractPoints(int points)
-        userFacade.subtractsPoints(days,userId);
+        Booking booking = NewBookingFacade.addNewBooking(users_Id, String.valueOf(booking_date), booking_status, itemId, days, comment);
+
+
+        userFacade.subtractsPoints(days,users_Id);
         request.setAttribute("booking", booking);
         return pageToShow;
     }

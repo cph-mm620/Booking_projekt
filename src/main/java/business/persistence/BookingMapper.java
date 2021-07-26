@@ -18,7 +18,7 @@ public class BookingMapper {
 
     public Booking addNewBooking(Booking booking) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO booking SET days = ?, booking_date = ?, booking_status = ?, fk_user_id =?, fk_item_id = ?";
+            String sql = "INSERT INTO booking SET days = ?, booking_date = ?, booking_status = ?, users_id =?, item_id = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
