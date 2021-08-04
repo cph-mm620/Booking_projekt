@@ -25,6 +25,7 @@
                 ${requestScope.booking.booking_status = "Reseveret"}
         </p>
 
+
     </jsp:body>
 
 </t:genericpage>

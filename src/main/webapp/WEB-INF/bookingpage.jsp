@@ -16,11 +16,13 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">navn</th>
-                    <th scope="col">type</th>
-                    <th scope="col">beskrivelse</th>
-                    <th scope="col">rum nr.</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Udstyrs nr</th>
+                    <th scope="col">Navn</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">lokale</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,6 +36,7 @@
                                 <td>${item.item_type}</td>
                                 <td>${item.description}</td>
                                 <td>${item.room_nr}</td>
+
                                 <td> <select class="form-select mt-4" name="days${item.item_id}">
                                     <option text="antal dage">antal dage</option>
                                     <option value="1">1</option>

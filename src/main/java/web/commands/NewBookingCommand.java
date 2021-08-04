@@ -26,8 +26,7 @@ public class NewBookingCommand extends CommandProtectedPage {
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException
-    {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");
@@ -36,10 +35,10 @@ public class NewBookingCommand extends CommandProtectedPage {
         int days = 0;
         boolean booking_status = false;
 
+
         try {
             days = Integer.parseInt(request.getParameter("days" + itemId));
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new UserException("Husk at indtaste et antal dage!!!");
         }
         LocalDate booking_date = LocalDate.now(); // .plusDays(days);
@@ -49,8 +48,9 @@ public class NewBookingCommand extends CommandProtectedPage {
         Booking booking = NewBookingFacade.addNewBooking(users_Id, String.valueOf(booking_date), booking_status, itemId, days, comment);
 
 
-        userFacade.subtractsPoints(days,users_Id);
+        userFacade.subtractsPoints(days, users_Id);
         request.setAttribute("booking", booking);
         return pageToShow;
     }
+
 }

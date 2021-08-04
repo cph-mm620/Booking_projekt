@@ -55,4 +55,30 @@ public class ItemMapper {
 
         return itemList;
     }
+
+    public void createItem(Item item) throws UserException
+    {
+        try (Connection connection = database.connect())
+        {
+            //"Oculus Quest 2",	"vr-1",	"VR-headset",212
+            String sql = "INSERT INTO item (item_id, item_name, description, room_nr) VALUES (?, ?, ?, ?)";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, item.getItem_id());
+                ps.setString(2, item.getItem_name());
+                ps.setString(3, item.getDescription());
+                ps.setInt(4, item.getRoom_nr());
+                ps.executeUpdate();
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
 }

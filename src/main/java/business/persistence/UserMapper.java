@@ -18,13 +18,14 @@ public class UserMapper
     {
         try (Connection connection = database.connect())
         {
-            String sql = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO users (email, password, role, point) VALUES (?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
                 ps.setString(1, user.getEmail());
                 ps.setString(2, user.getPassword());
                 ps.setString(3, user.getRole());
+                ps.setInt(4,user.getPoint());
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
@@ -76,13 +77,13 @@ public class UserMapper
         }
     }
 
-    public int subtractsPoints(int points, int users_Id) {
+    public int subtractsPoints(int point, int id) {
         try (Connection connection = database.connect()) {
-            String sql = "update user set points = points - ? where users_id = ?";
+            String sql = "update users set point = point - ? where id = ?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setInt(1, points);
-                ps.setInt(2, users_Id);
+                ps.setInt(1, point);
+                ps.setInt(2, id);
                 ps.executeUpdate();
 
             } catch (SQLException throwables) {
@@ -92,6 +93,6 @@ public class UserMapper
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return points;
+        return point;
     }
 }

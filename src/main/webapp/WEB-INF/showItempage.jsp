@@ -19,18 +19,19 @@
                 <th scope="col">Beskrivelse</th>
                 <th scope="col">Lokale</th>
                 <th scope="col">Type</th>
-
-
             </tr>
+
+
             <c:forEach var="item" items="${requestScope.itemList}">
+
                 <tr>
                     <td>${item.item_id}</td>
                     <td>${item.item_name}</td>
                     <td>${item.item_tag}</td>
                     <td>${item.room_nr}</td>
                     <td>${item.item_type}</td>
-
                 </tr>
+
             </c:forEach>
         </table>
 

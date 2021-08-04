@@ -17,6 +17,7 @@ public class User
         this.email = email;
         this.password = password;
         this.role = role;
+
     }
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper

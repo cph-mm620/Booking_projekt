@@ -13,10 +13,18 @@
         <h1>Hello ${sessionScope.email} </h1>
 
         Role: ${sessionScope.role}
+</br>
+        Dine point: ${sessionScope.user.point}
 
         </br>
 
         <a href="${pageContext.request.contextPath}/fc/bookingpage">Book dit udstyr her:</a>
+
+        </br>
+
+
+
+
     </jsp:body>
 
 </t:genericpage>
