@@ -38,7 +38,7 @@ class BookingMapperTest {
     @Test
     void addNewBooking() throws UserException {
         LocalDate booking_date = LocalDate.now();
-        booking = new Booking(booking_date, 2, "", false, user.getId(), item.getItem_id());
+        //booking = new Booking(booking_date, 2, "", false, user.getId(), item.getItem_id());
         bookingMapper.addNewBooking(booking);
     }
 }
